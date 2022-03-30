@@ -11,7 +11,8 @@ import type {Node} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import BearCounter from './src/components/BearCounter';
+import BearCountScreen from './src/screens/BearCountScreen';
+import RootStack from './src/navigations/RootStack';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,8 +25,9 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NavigationContainer></NavigationContainer>
-      {/* <BearCounter /> */}
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
     </SafeAreaView>
   );
 };

@@ -1,8 +1,9 @@
 import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
 import React from 'react';
 import useStore from '../store/configureStore';
+import {CenterContainer} from '../components/Container';
 
-const BearCounter = () => {
+const BearCountScreen = () => {
   // zustand에 담고있던 값을 갖고옴
   const bears = useStore(state => state.bears);
 
@@ -12,7 +13,7 @@ const BearCounter = () => {
   const testFunc = useStore(state => state.testFunc);
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <CenterContainer>
       <TouchableOpacity
         onPress={increaseBear}
         style={{backgroundColor: 'skyblue', padding: 16}}>
@@ -34,8 +35,8 @@ const BearCounter = () => {
         style={{backgroundColor: 'skyblue', padding: 16, marginTop: 16}}>
         <Text>-</Text>
       </TouchableOpacity>
-    </View>
+    </CenterContainer>
   );
 };
 
-export default BearCounter;
+export default BearCountScreen;
