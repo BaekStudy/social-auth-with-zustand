@@ -1,32 +1,39 @@
+import React from 'react';
+import { Alert } from 'react-native';
 import create from 'zustand';
-import {devtools} from 'zustand/middleware';
+import { devtools } from 'zustand/middleware';
 
 // set 함수를 통해서만 상태 변경가능
-const store = set => ({
-  bears: 0,
-  tigers: [],
-  increaseBear: () => set(state => ({bears: state.bears + 1})),
-  decreaseBear: () => set(state => ({bears: state.bears - 1})),
+const store = (set) => ({
+  numbers: 0, // 곰 개수
+  // tigers: [],
+  increaseNumber: () => set((state) => ({ numbers: state.numbers + 1 })),
+  decreaseNumber: () => set((state) => ({ numbers: state.numbers - 1 })),
 
-  addTiger: tiger =>
-    set(state => ({
-      tigers: state.tigers.concat(tiger),
-    })),
-  updateTigers: tigers => {
-    set({tigers});
-  },
+  // addTiger: (tiger) =>
+  //   set((state) => ({
+  //     tigers: state.tigers.concat(tiger),
+  //   })),
+  // updateTigers: (tigers) => {
+  //   set({ tigers });
+  // },
 
-  removeAllBears: () => set({bears: 0}),
-  testFunc: obj => {
-    console.log('obj', obj);
-    const {msg, newCount} = obj;
-    console.log(msg, newCount);
-    set(state => ({bears: newCount}));
+  removeAllNumbers: () => set({ numbers: 0 }),
+  testFunction: (object) => {
+    // object = 객체(오브젝트)
+    console.log('object', object);
+    const { msg, newNumbers } = object;
+    // object.msg, object.newCount
+    console.log(msg, newNumbers);
+    set((state) => ({ numbers: newNumbers }));
+
+    Alert.alert('numbers 값이 변경되었습니다.', msg + ' ' + newNumbers);
   },
 });
 
-const userStore = create(devtools(store));
-userStore.subscribe(state => {
+const userStore = create(store);
+// const userStore = create(devtools(store));
+userStore.subscribe((state) => {
   console.log(`Something's changed: `, state); // 어떤 상태가 변경되더라도 로그가 출력됨
 });
 

@@ -1,20 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import BearCountScreen from './src/screens/BearCountScreen';
-import RootStack from './src/navigations/RootStack';
+import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import { NavigationContainer as BrowserRouter } from '@react-navigation/native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import RootRouter from './src/routers/RootRouter';
 
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -25,9 +15,9 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
+      <BrowserRouter>
+        <RootRouter />
+      </BrowserRouter>
     </SafeAreaView>
   );
 };
