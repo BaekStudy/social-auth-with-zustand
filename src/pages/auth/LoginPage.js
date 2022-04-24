@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { CenterContainer } from '../../components/Container';
 import { useNavigation } from '@react-navigation/native';
 // import {AccessToken, Profile, LoginManager} from 'react-native-fbsdk-next';
@@ -14,6 +14,7 @@ const LoginPage = (props) => {
 
   // Ⅰ.페이스북로그인 클릭시 호출되는 함수
   const facebookLogin = () => {
+    Alert.alert('페북 버튼 누름');
     // LoginManager.logInWithPermissions(['public_profile']).then(
     //     function (result) {
     //         if (result.isCancelled) {

@@ -17,7 +17,7 @@ const StartSplashPage = (props) => {
     setTimeout(() => {
       // page.navigate('Login'); // 화면이동
 
-      page.push('Login');
+      page.replace('Login');
       // page.push('Login')
     }, 2000);
   }, []);
